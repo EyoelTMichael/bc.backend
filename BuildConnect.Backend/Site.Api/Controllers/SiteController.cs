@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Site.Application.Features.SiteFeatures;
 using MediatR;
 using Site.Application.Features.SiteFeatures.Command;
 using Site.Application.Features.SiteFeatures.Query;
@@ -27,6 +26,7 @@ namespace Site.Api.Controllers
             var site = await _mediator.Send(new GetSiteQuery { Id = id });
             return Ok(site);
         }
+        
         [HttpPost]
         public async Task<ActionResult<SiteDto>> Create(CreateSiteCommand command)
         {

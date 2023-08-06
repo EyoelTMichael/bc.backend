@@ -1,15 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "x0h+KPJMA/sStaOfSVRk2birK3LasVfEuATwcaVWcUAs4wgJFMA+XqAf49cL5GZOfsLFby/cvNsfzwpWcpImKA==",
+  "dgSpecHash": "kMfZy0Cvcs0q47Gt4sDmbQAuT15RbJwVwKRGJ8JppD7FoZCXfWCkLmU3mbyQJAaN2Sqfitjv82H/Y7ODc+3OJw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Betty\\Desktop\\BuildConnect\\BuildConnect.Backend\\BuildConnect.Backend\\Site.Infrastructure\\Site.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Betty\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\Betty\\.nuget\\packages\\bcrypt.net\\0.1.0\\bcrypt.net.0.1.0.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\mediatr\\11.0.0\\mediatr.11.0.0.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.0.0\\mediatr.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "C:\\Users\\Betty\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.4\\microsoft.aspnet.identity.core.2.2.4.nupkg.sha512",
+    "C:\\Users\\Betty\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.9\\microsoft.aspnetcore.authentication.jwtbearer.7.0.9.nupkg.sha512",
+    "C:\\Users\\Betty\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.9\\microsoft.entityframeworkcore.7.0.9.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.9\\microsoft.entityframeworkcore.abstractions.7.0.9.nupkg.sha512",
@@ -26,12 +30,41 @@
     "C:\\Users\\Betty\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\Betty\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.15.1\\microsoft.identitymodel.jsonwebtokens.6.15.1.nupkg.sha512",
+    "C:\\Users\\Betty\\.nuget\\packages\\microsoft.identitymodel.logging\\6.15.1\\microsoft.identitymodel.logging.6.15.1.nupkg.sha512",
+    "C:\\Users\\Betty\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.15.1\\microsoft.identitymodel.protocols.6.15.1.nupkg.sha512",
+    "C:\\Users\\Betty\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.15.1\\microsoft.identitymodel.protocols.openidconnect.6.15.1.nupkg.sha512",
+    "C:\\Users\\Betty\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.15.1\\microsoft.identitymodel.tokens.6.15.1.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\npgsql\\7.0.4\\npgsql.7.0.4.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.4\\npgsql.entityframeworkcore.postgresql.7.0.4.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
+    "C:\\Users\\Betty\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.15.1\\system.identitymodel.tokens.jwt.6.15.1.nupkg.sha512",
+    "C:\\Users\\Betty\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512",
+    "C:\\Users\\Betty\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\Betty\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BCrypt.Net 0.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "BCrypt.Net",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Identity.Core 2.2.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Identity.Core",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

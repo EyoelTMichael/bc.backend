@@ -16,6 +16,8 @@ public class MappingProfile : Profile
         CreateMap<Role, RoleDto>();
         CreateMap<Permission, PermissionDto>();
         CreateMap<RolePermission, RolePermissionDto>();
+        CreateMap<User, UserDto>();
+        CreateMap<Material, MaterialDto>();
 
         // etc. for other mappings
     }

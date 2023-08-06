@@ -1,10 +1,12 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Site.Application.Common.Interface;
-using Site.Infrastructure.Data;
+using Site.Infrastructure.Service;
 using System.Reflection;
+using System.Text;
 
 namespace Site.Infrastructure
 {
@@ -12,12 +14,9 @@ namespace Site.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            //services.AddDbContext<SiteAppDbContext>(options =>
-            //    options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
-            //    services.AddDbContext<IApplicationDbContext, SiteAppDbContext>(options =>
-            //options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
             services.AddMediatR(Assembly.GetExecutingAssembly());
-
+            services.AddScoped<IJwtService, JwtService>();
+            services.AddScoped<IFileService, FileService>();
             return services;
         }
     }

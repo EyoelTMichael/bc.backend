@@ -7,10 +7,12 @@ C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Si
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Site.Api.pdb
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\BCrypt.Net.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Humanizer.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\MediatR.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\MediatR.Contracts.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Microsoft.AspNet.Identity.Core.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
@@ -59,5 +61,3 @@ C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Si
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\obj\Debug\net7.0\Site.Api.pdb
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\obj\Debug\net7.0\Site.Api.genruntimeconfig.cache
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\obj\Debug\net7.0\ref\Site.Api.dll
-C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\BCrypt.Net.dll
-C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Microsoft.AspNet.Identity.Core.dll

@@ -5,7 +5,7 @@ using Site.Domain.Entity;
 using System.Linq.Expressions;
 using System.Reflection.Emit;
 
-    namespace Site.Infrastructure.Data;
+namespace Site.Infrastructure.Data;
 
 public class SiteAppDbContext : DbContext, IApplicationDbContext
 {
@@ -28,6 +28,16 @@ public class SiteAppDbContext : DbContext, IApplicationDbContext
         .HasOne(u => u.Role)
         .WithMany()
         .HasForeignKey(u => u.RoleId);
+
+        builder.Entity<TaskModel>()
+        .HasOne(t => t.AssigneeUser)
+        .WithOne()
+        .HasForeignKey<TaskModel>(t => t.AssigneeUserId);
+
+        builder.Entity<TaskModel>()
+            .HasOne(t => t.AssignedUser)
+            .WithOne()
+            .HasForeignKey<TaskModel>(t => t.AssignedUserId);
     }
 
     public DbSet<SiteModel> Sites { get; set; }
@@ -36,6 +46,11 @@ public class SiteAppDbContext : DbContext, IApplicationDbContext
     public DbSet<RolePermission> RolePermissions { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Material> Materials { get; set; }
+    public DbSet<MaterialReport> MaterialReports { get; set; }
+    public DbSet<StaffOnSite> StaffOnSites { get; set; }
+    public DbSet<LabourForce> LabourForces { get; set; }
+    public DbSet<DailyReport> DailyReports { get; set; }
+    public DbSet<TaskModel> Tasks { get; set; }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
     {

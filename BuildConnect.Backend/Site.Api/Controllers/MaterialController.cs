@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Site.Application.Features.MaterialFeature.Command;
+using Site.Application.Features.MaterialFeatures.Query;
+using Site.Application.Features.RoleFeatures.Query;
 using Site.Application.Features.UserFeature.Command;
 using Site.Domain.Entity;
 
@@ -16,6 +18,18 @@ public class MaterialController : ControllerBase
     public MaterialController(IMediator mediator)
     {
         _mediator = mediator;
+    }
+    [HttpGet]
+    public async Task<ActionResult<MaterialDto>> Get([FromQuery] Guid id)
+    {
+        var material = await _mediator.Send(new GetMaterialQuery { Id = id });
+        return Ok(material);
+    }
+    [HttpGet("all")]
+    public async Task<ActionResult<IEnumerable<MaterialDto>>> GetAll()
+    {
+        var materials = await _mediator.Send(new GetAllMaterialsQuery());
+        return Ok(materials);
     }
     [HttpPost]
     public async Task<ActionResult<MaterialDto>> Create(CreateMaterialCommand command)

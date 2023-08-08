@@ -13,6 +13,11 @@ public interface IApplicationDbContext
     DbSet<RolePermission> RolePermissions { get; set; }
     DbSet<User> Users { get; set; }
     DbSet<Material> Materials { get; set; }
+    DbSet<MaterialReport> MaterialReports { get; set; }
+    public DbSet<StaffOnSite> StaffOnSites { get; set; }
+    public DbSet<LabourForce> LabourForces { get; set; }
+    public DbSet<DailyReport> DailyReports { get; set; }
+    public DbSet<TaskModel> Tasks { get; set; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

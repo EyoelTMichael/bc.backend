@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="Command\Role\" />
     <Folder Include="Command\Site\" />
-    <Folder Include="Features\MaterialFeature\Query\" />
   </ItemGroup>
 
   <ItemGroup>

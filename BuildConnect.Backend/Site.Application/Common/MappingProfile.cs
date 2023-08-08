@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
+using Site.Application.Features.StaffOnSiteFeature.Command;
 using Site.Domain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Site.Application.Common;
 
@@ -18,7 +14,11 @@ public class MappingProfile : Profile
         CreateMap<RolePermission, RolePermissionDto>();
         CreateMap<User, UserDto>();
         CreateMap<Material, MaterialDto>();
-
-        // etc. for other mappings
+        CreateMap<MaterialReport, MaterialReportDto>();
+        CreateMap<StaffOnSite, StaffOnSiteDto>();
+        CreateMap<LabourForce, LabourForceDto>();
+        CreateMap<DailyReport, DailyReportDto>();
+        CreateMap<CreateStaffOnSiteCommand, StaffOnSiteDto>();
+        CreateMap<TaskModel, TaskModelDto>();
     }
 }

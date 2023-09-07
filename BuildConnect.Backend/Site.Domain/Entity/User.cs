@@ -1,9 +1,4 @@
 ﻿using Site.Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Site.Domain.Entity
 {
@@ -15,11 +10,13 @@ namespace Site.Domain.Entity
         public string UserName { get; set; }
         public string ProfileImage { get; set; }
         public string PasswordHash { get; set; }
-        public Guid RoleId { get; set; }
-        public Role Role { get; set; }
+        public Rolez Role { get; set; }
+        public string? Signature { get; set; }
+        //public Guid RoleId { get; set; }
+        //public Role Role { get; set; }
     }
 
-    public class UserDto
+    public class UserDTO
     {
         public Guid Id { get; set; }
         public string FullName { get; set; }
@@ -27,6 +24,18 @@ namespace Site.Domain.Entity
         public string PhoneNumber { get; set; }
         public string UserName { get; set; }
         public string ProfileImage { get; set; }
-        public Guid RoleId { get; set; }
+        public Rolez Role { get; set; }
+        public string? Signature { get; set; }
+        //public Guid RoleId { get; set; }
+    }
+
+    public enum Rolez
+    {
+        Admin,
+        SiteEngineer,
+        StoreKeeper,
+        DataCollector,
+        Consultant,
+        Contractor,
     }
 }

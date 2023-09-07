@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Site.Application.Features.MaterialFeature.Query
 {
-    public class GetMaterialByIdQueryHandler : IRequestHandler<GetMaterialQuery, MaterialDto>
+    public class GetMaterialByIdQueryHandler : IRequestHandler<GetMaterialQuery, MaterialDTO>
     {
         private readonly IApplicationDbContext _context;
 
@@ -22,7 +22,7 @@ namespace Site.Application.Features.MaterialFeature.Query
             _context = context;
         }
 
-        public async Task<MaterialDto> Handle(GetMaterialQuery request, CancellationToken cancellationToken)
+        public async Task<MaterialDTO> Handle(GetMaterialQuery request, CancellationToken cancellationToken)
         {
             var material = await _context.Materials.FindAsync(request.Id);
             if (material == null)
@@ -30,7 +30,7 @@ namespace Site.Application.Features.MaterialFeature.Query
                 throw new NotFoundException(nameof(Material), request.Id);
             }
 
-            return new MaterialDto
+            return new MaterialDTO
             {
                 Id = material.Id,
                 Name = material.Name,

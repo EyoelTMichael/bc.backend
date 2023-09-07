@@ -8,11 +8,6 @@ public class GetRoleQuery : IRequest<RoleDto>
     public Guid Id { get; set; }
 }
 
-public class GetAllRolesQuery : IRequest<IEnumerable<RoleDto>>
+public class GetAllRolesQuery : IRequest<IEnumerable<string>>
 {
-}
-
-public class GetPermissionsByRoleIdQuery : IRequest<List<PermissionDto>>
-{
-    public Guid RoleId { get; set; }
 }

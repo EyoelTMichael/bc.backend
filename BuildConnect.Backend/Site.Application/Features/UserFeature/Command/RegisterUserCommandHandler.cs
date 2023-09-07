@@ -1,7 +1,11 @@
 ﻿using MediatR;
 using Site.Application.Common.Interface;
 using Site.Domain.Entity;
-using Microsoft.AspNet.Identity;
+using System.Text.RegularExpressions;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats;
+
+
 
 namespace Site.Application.Features.UserFeature.Command;
 public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, Guid>
@@ -14,14 +18,39 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, G
         _context = context;
         _fileService = fileService;
     }
-
+    public string GetFileTypeFromBase64(string base64DataUrl)
+    {
+        var match = Regex.Match(base64DataUrl, @"^data:image\/([a-zA-Z0-9]+);base64,");
+        if (match.Success && match.Groups.Count > 1)
+        {
+            return match.Groups[1].Value;
+        }
+        return null;
+    }
     public async Task<Guid> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
-        string profileImageFileName = null;
-        if (request.ProfileImage != null)
+        byte[] fileBytes;
+
+        using (var memoryStream = new MemoryStream())
         {
-            profileImageFileName = await _fileService.SaveFileAsync(request.ProfileImage, "Content");
+            await request.ProfileImage.CopyToAsync(memoryStream);
+            fileBytes = memoryStream.ToArray();
         }
+
+        // Detect file type using ImageSharp
+        var format = Image.DetectFormat(fileBytes);
+
+        // Check if the detected format is valid
+        if (format == null)
+        {
+            throw new Exception("Invalid image format.");
+        }
+
+
+        var fileExtension = format.FileExtensions.FirstOrDefault();
+
+        //var fileExtension = format.DefaultFileExtension;
+        var fileName = await _fileService.SaveFileAsync(fileBytes, fileExtension, "UserProfileImages");
 
         var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
@@ -34,8 +63,8 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, G
             PhoneNumber = request.PhoneNumber,
             UserName = request.UserName,
             PasswordHash = passwordHash,
-            ProfileImage = profileImageFileName,
-            RoleId = request.RoleId
+            ProfileImage = fileName,
+            Role = request.Role
         };
 
         _context.Users.Add(user);

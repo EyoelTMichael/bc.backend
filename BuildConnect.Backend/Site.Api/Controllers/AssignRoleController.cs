@@ -17,18 +17,5 @@ namespace Site.Api.Controllers
             _logger = logger;
             _mediator = mediator;
         }
-        [HttpPut("{roleId}/permissions")]
-        public async Task<IActionResult> AddPermissionsToRole(Guid roleId, [FromBody] List<Guid> permissionIds)
-        {
-            var command = new AssignPermissionsToRoleCommand
-            {
-                RoleId = roleId,
-                PermissionIds = permissionIds
-            };
-
-            await _mediator.Send(command);
-
-            return NoContent();
-        }
     }
 }

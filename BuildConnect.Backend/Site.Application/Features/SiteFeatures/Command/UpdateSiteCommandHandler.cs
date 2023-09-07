@@ -5,7 +5,7 @@ using Site.Domain.Entity;
 
 namespace Site.Application.Features.SiteFeatures.Command
 {
-    public class UpdateSiteCommandHandler : IRequestHandler<UpdateSiteCommand, SiteDto>
+    public class UpdateSiteCommandHandler : IRequestHandler<UpdateSiteCommand, SiteDTO>
     {
         private readonly IApplicationDbContext _context;
 
@@ -14,7 +14,7 @@ namespace Site.Application.Features.SiteFeatures.Command
             _context = context;
         }
 
-        public async Task<SiteDto> Handle(UpdateSiteCommand request, CancellationToken cancellationToken)
+        public async Task<SiteDTO> Handle(UpdateSiteCommand request, CancellationToken cancellationToken)
         {
             var site = await _context.Sites.FindAsync(request.Id);
 
@@ -31,7 +31,7 @@ namespace Site.Application.Features.SiteFeatures.Command
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            return new SiteDto 
+            return new SiteDTO
             { 
                 Id = site.Id,
                 Name = site.Name, 

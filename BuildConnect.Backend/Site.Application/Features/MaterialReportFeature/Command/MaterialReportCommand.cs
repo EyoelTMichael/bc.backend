@@ -9,7 +9,7 @@ public class CreateMaterialReportCommand : IRequest<Guid>
     public int Quantity { get; set; }
 }
 
-public class UpdateMaterialReportCommand : IRequest<MaterialReportDto>
+public class UpdateMaterialReportCommand : IRequest<MaterialReportDTO>
 {
     public Guid Id { get; set; }
     public string Name { get; set; }

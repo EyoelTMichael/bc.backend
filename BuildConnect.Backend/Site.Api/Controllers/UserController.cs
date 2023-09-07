@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Site.Application.Features.LookupFeature.Query;
 using Site.Application.Features.UserFeature.Command;
 using Site.Application.Features.UserFeature.Query;
 using Site.Domain.Entity;
@@ -18,16 +20,23 @@ public class UserController : ControllerBase
         _mediator = mediator;
     }
     [HttpGet]
-    public async Task<ActionResult<UserDto>> Get([FromQuery] Guid id)
+
+    public async Task<ActionResult<UserDTO>> Get([FromQuery] Guid id)
     {
         var user = await _mediator.Send(new GetUserByIdQuery { Id = id });
         return Ok(user);
     }
     [HttpGet("all")]
-    public async Task<ActionResult<IEnumerable<UserDto>>> GetAll()
+    public async Task<ActionResult<IEnumerable<UserDTO>>> GetAll()
     {
         var users = await _mediator.Send(new GetAllUsersQuery());
         return Ok(users);
+    }
+    [HttpGet("Roles")]
+    public async Task<ActionResult<IEnumerable<string>>> GetRoles()
+    {
+        var roles = await _mediator.Send(new GetAllRolesQuery());
+        return Ok(roles);
     }
 
     //[HttpPost]
@@ -37,19 +46,22 @@ public class UserController : ControllerBase
     //    return Ok(userId);
     //}
 
-    
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(Guid id, [FromForm] UpdateUserCommand command)
+
+    [HttpPut()]
+    public async Task<IActionResult> Update(UpdateUserCommand command)
     {
-        command.Id = id;
         var user = await _mediator.Send(command);
         return Ok(user);
     }
 
     [HttpDelete]
-    public async Task<Unit> Delete(DeleteUserCommand command)
+    [Authorize(Roles = nameof(Rolez.Admin) + "," + nameof(Rolez.DataCollector))]
+
+    public async Task<Unit> Delete([FromQuery] Guid id)
     {
-        await _mediator.Send(command);
+        await _mediator.Send(new DeleteUserCommand {
+            Id = id
+        });
         return Unit.Value;
     }
     

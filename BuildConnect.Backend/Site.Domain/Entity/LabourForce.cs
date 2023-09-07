@@ -9,7 +9,7 @@ namespace Site.Domain.Entity
         public Guid DailyReportId { get; set; }
     }
 
-    public class LabourForceDto
+    public class LabourForceDTO
     {
         public Guid Id { get; set; }
         public string Position { get; set; }

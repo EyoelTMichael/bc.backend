@@ -9,7 +9,7 @@ public class CreateStaffOnSiteCommand : IRequest<Guid>
     public int Count { get; set; }
 }
 
-public class UpdateStaffOnSiteCommand : IRequest<StaffOnSiteDto>
+public class UpdateStaffOnSiteCommand : IRequest<StaffOnSiteDTO>
 {
     public Guid Id { get; set; }
     public string Position { get; set; }

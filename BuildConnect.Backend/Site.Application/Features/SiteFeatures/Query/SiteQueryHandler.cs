@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Site.Application.Features.SiteFeatures.Query;
 
-public class SiteQueryHandler : IRequestHandler<GetSiteQuery, SiteDto>
+public class SiteQueryHandler : IRequestHandler<GetSiteQuery, SiteDTO>
 {
     private readonly IApplicationDbContext _context;
 
@@ -19,7 +19,7 @@ public class SiteQueryHandler : IRequestHandler<GetSiteQuery, SiteDto>
         _context = context;
     }
 
-    public async Task<SiteDto> Handle(GetSiteQuery request, CancellationToken cancellationToken)
+    public async Task<SiteDTO> Handle(GetSiteQuery request, CancellationToken cancellationToken)
     {
         var site = await _context.Sites.FindAsync(request.Id);
 
@@ -29,7 +29,7 @@ public class SiteQueryHandler : IRequestHandler<GetSiteQuery, SiteDto>
             throw new NotFoundException(nameof(Site), request.Id);
         }
 
-        return new SiteDto
+        return new SiteDTO
         {
             Id = site.Id,
             Name = site.Name,

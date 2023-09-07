@@ -6,7 +6,7 @@ using Site.Domain.Entity;
 
 namespace Site.Application.Features.MaterialFeature.Command;
 
-public class CreateMaterialCommandHandler : IRequestHandler<CreateMaterialCommand, MaterialDto>
+public class CreateMaterialCommandHandler : IRequestHandler<CreateMaterialCommand, MaterialDTO>
 {
 
     private readonly IApplicationDbContext _context;
@@ -17,7 +17,7 @@ public class CreateMaterialCommandHandler : IRequestHandler<CreateMaterialComman
         _context = context;
         _mapper = mapper;
     }
-    public async Task<MaterialDto> Handle(CreateMaterialCommand request, CancellationToken cancellationToken)
+    public async Task<MaterialDTO> Handle(CreateMaterialCommand request, CancellationToken cancellationToken)
     {
         var material = new Material
         {
@@ -29,6 +29,6 @@ public class CreateMaterialCommandHandler : IRequestHandler<CreateMaterialComman
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return _mapper.Map<MaterialDto>(material);
+        return _mapper.Map<MaterialDTO>(material);
     }
 }

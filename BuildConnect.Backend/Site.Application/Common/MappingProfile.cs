@@ -8,17 +8,23 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<SiteModel, SiteDto>();
+        CreateMap<SiteModel, SiteDTO>();
         CreateMap<Role, RoleDto>();
-        CreateMap<Permission, PermissionDto>();
-        CreateMap<RolePermission, RolePermissionDto>();
-        CreateMap<User, UserDto>();
-        CreateMap<Material, MaterialDto>();
-        CreateMap<MaterialReport, MaterialReportDto>();
-        CreateMap<StaffOnSite, StaffOnSiteDto>();
-        CreateMap<LabourForce, LabourForceDto>();
-        CreateMap<DailyReport, DailyReportDto>();
-        CreateMap<CreateStaffOnSiteCommand, StaffOnSiteDto>();
-        CreateMap<TaskModel, TaskModelDto>();
+        CreateMap<User, UserDTO>();
+        CreateMap<Material, MaterialDTO>();
+        CreateMap<MaterialReport, MaterialReportDTO>();
+        CreateMap<StaffOnSite, StaffOnSiteDTO>();
+        CreateMap<LabourForce, LabourForceDTO>();
+        CreateMap<DailyReport, DailyReportDTO>();
+        CreateMap<CreateStaffOnSiteCommand, StaffOnSiteDTO>();
+        //CreateMap<UserTask, UserTaskDto>();
+        CreateMap<EquipmentReport, EquipmentReportDTO>();
+        CreateMap<Folder, FolderDto>();
+        CreateMap<Lookup, LookupDTO>();
+        CreateMap<Schedule, ScheduleDTO>();
+        CreateMap<Inspection, InspectionDTO>();
+        CreateMap<MaterialCost, MaterialCostDTO>();
+        CreateMap<EquipmentCost, EquipmentCostDTO>();
+        CreateMap<WorkItem, WorkItemDTO>();
     }
 }

@@ -2,12 +2,11 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Site.Application.Common.Interface;
-using Site.Application.Features.MaterialReportFeatures.Command;
 using Site.Domain.Entity;
 
 namespace Site.Application.Features.DailyReportFeature.Command;
 
-public class CreateDailyReportCommandCommandHandler : IRequestHandler<CreateDailyReportCommand, DailyReportDto>
+public class CreateDailyReportCommandCommandHandler : IRequestHandler<CreateDailyReportCommand, DailyReportDTO>
 {
 
     private readonly IApplicationDbContext _context;
@@ -18,12 +17,12 @@ public class CreateDailyReportCommandCommandHandler : IRequestHandler<CreateDail
         _context = context;
         _mapper = mapper;
     }
-    public async Task<DailyReportDto> Handle(CreateDailyReportCommand request, CancellationToken cancellationToken)
+    public async Task<DailyReportDTO> Handle(CreateDailyReportCommand request, CancellationToken cancellationToken)
     {
         // Create Daily Report
         var dailyReport = new DailyReport
         {
-            Date = request.Date,
+            Date = request.Date.ToUniversalTime(),
             WorkHour = request.WorkHour,
             InterruptedHour = request.InterruptedHour,
             Weather = request.Weather,
@@ -69,6 +68,19 @@ public class CreateDailyReportCommandCommandHandler : IRequestHandler<CreateDail
             _context.MaterialReports.Add(materialReport);
         }
 
+        foreach (var equipmentCommand in request.EquipmentReports)
+        {
+            var equipmentReport = new EquipmentReport
+            {
+                Name = equipmentCommand.Name,
+                WorkHour = equipmentCommand.WorkHour,
+                EdleHour = equipmentCommand.EdleHour,
+                DailyReportId = dailyReport.Id,
+            };
+
+            _context.EquipmentReports.Add(equipmentReport);
+        }
+
 
         await _context.SaveChangesAsync(cancellationToken);
 
@@ -77,28 +89,36 @@ public class CreateDailyReportCommandCommandHandler : IRequestHandler<CreateDail
             .ToListAsync(cancellationToken);
 
         // Map to DTOs
-        var staffOnSiteDtos = _mapper.Map<List<StaffOnSiteDto>>(staffOnSites);
+        var staffOnSiteDtos = _mapper.Map<List<StaffOnSiteDTO>>(staffOnSites);
 
         var labourForces = await _context.LabourForces
             .Where(s => s.DailyReportId == dailyReport.Id)
             .ToListAsync(cancellationToken);
 
         // Map to DTOs
-        var labourForceDtos = _mapper.Map<List<LabourForceDto>>(labourForces);
+        var labourForceDtos = _mapper.Map<List<LabourForceDTO>>(labourForces);
 
         var materialsReport = await _context.MaterialReports
             .Where(s => s.DailyReportId == dailyReport.Id)
             .ToListAsync(cancellationToken);
 
         // Map to DTOs
-        var materialReportDtos = _mapper.Map<List<MaterialReportDto>>(materialsReport);
+        var materialReportDtos = _mapper.Map<List<MaterialReportDTO>>(materialsReport);
+
+        var equipmensReport = await _context.EquipmentReports
+            .Where(s => s.DailyReportId == dailyReport.Id)
+            .ToListAsync(cancellationToken);
+
+        // Map to DTOs
+        var equipmentReportDtos = _mapper.Map<List<EquipmentReportDTO>>(equipmensReport);
 
 
         // Map to DTO
-        var dailyReportDto = _mapper.Map<DailyReportDto>(dailyReport);
+        var dailyReportDto = _mapper.Map<DailyReportDTO>(dailyReport);
         dailyReportDto.StaffsOnSite = staffOnSiteDtos;
         dailyReportDto.LabourForces = labourForceDtos;
         dailyReportDto.MaterialsReport = materialReportDtos;
+        dailyReportDto.EquipmentReport = equipmentReportDtos;
 
         return dailyReportDto;
     }

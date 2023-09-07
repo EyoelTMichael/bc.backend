@@ -10,7 +10,7 @@ namespace Site.Domain.Entity
         public DailyReport DailyReport { get; set; }
     }
 
-    public class StaffOnSiteDto
+    public class StaffOnSiteDTO
     {
         public Guid Id { get; set; }
         public string Position { get; set; }

@@ -14,7 +14,7 @@ namespace Site.Domain.Entity
         public Guid DailyReportId { get; set; }
     }
 
-    public class MaterialReportDto
+    public class MaterialReportDTO
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

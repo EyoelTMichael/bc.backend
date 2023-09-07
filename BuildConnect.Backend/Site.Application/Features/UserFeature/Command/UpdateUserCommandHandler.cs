@@ -5,7 +5,7 @@ using Site.Domain.Entity;
 
 namespace Site.Application.Features.UserFeature.Command;
 
-public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, UserDto>
+public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, UserDTO>
 {
     private readonly IApplicationDbContext _context;
     private readonly IFileService _fileService;
@@ -16,13 +16,13 @@ public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, UserD
         _fileService = fileService;
     }
 
-    public async Task<UserDto> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+    public async Task<UserDTO> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
     {
         var user = await _context.Users.FindAsync(request.Id);
 
         if (request.ProfileImage != null)
         {
-            user.ProfileImage = await _fileService.SaveFileAsync(request.ProfileImage, "Content");
+            //user.ProfileImage = await _fileService.SaveFileAsync(request.ProfileImage., "jpg", "Content");
         }
 
         user.FullName = request.FullName ?? user.FullName;
@@ -32,12 +32,13 @@ public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, UserD
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new UserDto
+        return new UserDTO
         {
+            Id = user.Id,
             Email = user.Email,
             PhoneNumber = user.PhoneNumber,
             UserName = user.UserName,
-            RoleId = user.RoleId,
+            Role = user.Role,
             FullName = user.FullName,
             ProfileImage = user.ProfileImage
         };

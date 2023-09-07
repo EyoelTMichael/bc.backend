@@ -1,13 +1,14 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Site.Application.Features.UserFeature.Command;
-using Site.Application.Features.UserFeature.Query;
+using Site.Application.Features.UserFeature.Common;
 using Site.Domain.Entity;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Site.Api.Controllers;
 [ApiController]
 [Route("[controller]")]
+//[Authorize(Roles = nameof(Rolez.Admin) + "," + nameof(Rolez.DataCollector))]
 public class AuthController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -18,15 +19,16 @@ public class AuthController : ControllerBase
         _mediator = mediator;
     }
     [HttpPost("Register")]
+
     public async Task<ActionResult<Guid>> Register([FromForm] RegisterUserCommand command)
     {
         var userId = await _mediator.Send(command);
         return Ok(userId);
     }
-    [HttpGet("Login")]
-    public async Task<ActionResult<string>> Login([FromQuery] string userName, [FromQuery] string password)
+    [HttpPost("Login")]
+    public async Task<ActionResult<LoginResponse>> Login(LoginUserCommand command)
     {
-        var token = await _mediator.Send(new LoginUserQuery { UserName = userName, Password = password});
+        var token = await _mediator.Send(command);
         return Ok(token);
     }
 }

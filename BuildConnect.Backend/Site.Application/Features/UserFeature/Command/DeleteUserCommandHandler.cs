@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Site.Application.Common.Interface;
-using Site.Domain.Entity;
 
 namespace Site.Application.Features.UserFeature.Command;
 public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand>

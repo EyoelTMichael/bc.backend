@@ -3,11 +3,11 @@ using Site.Domain.Entity;
 
 namespace Site.Application.Features.MaterialFeatures.Query;
 
-public class GetMaterialQuery : IRequest<MaterialDto>
+public class GetMaterialQuery : IRequest<MaterialDTO>
 {
     public Guid Id { get; set; }
 }
 
-public class GetAllMaterialsQuery : IRequest<IEnumerable<MaterialDto>>
+public class GetAllMaterialsQuery : IRequest<IEnumerable<MaterialDTO>>
 {
 }

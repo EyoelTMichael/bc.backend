@@ -1,11 +1,6 @@
 ﻿using MediatR;
 using Site.Application.Common.Interface;
 using Site.Domain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Site.Application.Features.SiteFeatures.Command;
 public class CreateSiteHandler : IRequestHandler<CreateSiteCommand, Guid>
@@ -26,7 +21,6 @@ public class CreateSiteHandler : IRequestHandler<CreateSiteCommand, Guid>
             Owner = request.Owner,
             Longitude = request.Longitude,
             Latitude = request.Latitude,
-            CreatedAt = DateTime.UtcNow
         };
 
         await _context.Sites.AddAsync(site, cancellationToken);

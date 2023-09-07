@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Site.Api.Middleware;
 using Site.Application;
@@ -33,10 +31,21 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             };
         });
 
+builder.Services.AddCors();
+
 builder.Services.AddInfrastructure();
 builder.Services.AddApplication();
 
+
+
 var app = builder.Build();
+
+app.UseCors(builder =>
+{
+    builder.WithOrigins("http://localhost:5173") // Replace with your client's address and port
+           .AllowAnyHeader()
+           .AllowAnyMethod();
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

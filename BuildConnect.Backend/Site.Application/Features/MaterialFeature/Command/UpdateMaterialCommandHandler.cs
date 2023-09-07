@@ -1,20 +1,13 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Site.Application.Common.Interface;
-using Site.Application.Features.PermissionFeatures.Command;
 using Site.Domain.Common.Exceptions;
 using Site.Domain.Entity;
-using Site.Infrastructure.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Site.Application.Features.MaterialFeature.Command;
 
-public class UpdateMaterialCommandHandler : IRequestHandler<UpdateMaterialCommand, MaterialDto>
+public class UpdateMaterialCommandHandler : IRequestHandler<UpdateMaterialCommand, MaterialDTO>
 {
 
     private readonly IApplicationDbContext _context;
@@ -25,7 +18,7 @@ public class UpdateMaterialCommandHandler : IRequestHandler<UpdateMaterialComman
         _context = context;
         _mapper = mapper;
     }
-    public async Task<MaterialDto> Handle(UpdateMaterialCommand request, CancellationToken cancellationToken)
+    public async Task<MaterialDTO> Handle(UpdateMaterialCommand request, CancellationToken cancellationToken)
     {
         var material = await _context.Materials.FindAsync(request.Id);
 
@@ -39,6 +32,6 @@ public class UpdateMaterialCommandHandler : IRequestHandler<UpdateMaterialComman
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return _mapper.Map<MaterialDto>(material);
+        return _mapper.Map<MaterialDTO>(material);
     }
 }

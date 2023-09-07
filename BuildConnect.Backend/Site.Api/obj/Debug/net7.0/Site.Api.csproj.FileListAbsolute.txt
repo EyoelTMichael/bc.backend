@@ -26,9 +26,11 @@ C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Si
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\MimeDetective.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Npgsql.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\SixLabors.ImageSharp.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Betty\Desktop\BuildConnect\BuildConnect.Backend\BuildConnect.Backend\Site.Api\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll

@@ -17,7 +17,7 @@ namespace Site.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<DailyReportDto>> Create(CreateDailyReportCommand command)
+        public async Task<ActionResult<DailyReportDTO>> Create(CreateDailyReportCommand command)
         {
             var dailyReport = await _mediator.Send(command);
             return Ok(dailyReport);

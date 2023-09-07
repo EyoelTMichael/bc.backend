@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Site.Application.Features.RoleFeatures.Command;
 using Site.Application.Features.RoleFeatures.Query;
-using Site.Application.Features.SiteFeatures.Command;
 using Site.Domain.Entity;
 
 namespace Site.Api.Controllers
@@ -30,12 +29,6 @@ namespace Site.Api.Controllers
         {
             var roles = await _mediator.Send(new GetAllRolesQuery());
             return Ok(roles);
-        }
-        [HttpGet("permissions")]
-        public async Task<ActionResult<List<PermissionDto>>> GetPermissions([FromQuery] Guid id)
-        {
-            var permissions = await _mediator.Send(new GetPermissionsByRoleIdQuery { RoleId = id});
-            return Ok(permissions);
         }
         [HttpPost]
         public async Task<ActionResult<Guid>> Create(CreateRoleCommand command)

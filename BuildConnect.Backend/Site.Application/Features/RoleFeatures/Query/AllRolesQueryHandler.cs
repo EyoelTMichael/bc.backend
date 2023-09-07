@@ -8,7 +8,7 @@ using Site.Domain.Entity;
 
 namespace Site.Application.Features.RoleFeatures.Query;
 
-public class GetAllRolesQueryHandler : IRequestHandler<GetAllRolesQuery, IEnumerable<RoleDto>>
+public class GetAllRolesQueryHandler : IRequestHandler<GetAllRolesQuery, IEnumerable<string>>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -19,13 +19,9 @@ public class GetAllRolesQueryHandler : IRequestHandler<GetAllRolesQuery, IEnumer
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<RoleDto>> Handle(GetAllRolesQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<string>> Handle(GetAllRolesQuery request, CancellationToken cancellationToken)
     {
-        var roles = await _context.Roles.ToListAsync(cancellationToken);
-        if (roles == null)
-        {
-            throw new NotFoundException(nameof(Role), "*");
-        }
-        return _mapper.Map<IEnumerable<RoleDto>>(roles);
+        var roles = Enum.GetNames(typeof(Rolez));
+        return roles;
     }
 }

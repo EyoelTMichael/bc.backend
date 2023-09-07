@@ -20,25 +20,25 @@ public class MaterialController : ControllerBase
         _mediator = mediator;
     }
     [HttpGet]
-    public async Task<ActionResult<MaterialDto>> Get([FromQuery] Guid id)
+    public async Task<ActionResult<MaterialDTO>> Get([FromQuery] Guid id)
     {
         var material = await _mediator.Send(new GetMaterialQuery { Id = id });
         return Ok(material);
     }
     [HttpGet("all")]
-    public async Task<ActionResult<IEnumerable<MaterialDto>>> GetAll()
+    public async Task<ActionResult<IEnumerable<MaterialDTO>>> GetAll()
     {
         var materials = await _mediator.Send(new GetAllMaterialsQuery());
         return Ok(materials);
     }
     [HttpPost]
-    public async Task<ActionResult<MaterialDto>> Create(CreateMaterialCommand command)
+    public async Task<ActionResult<MaterialDTO>> Create(CreateMaterialCommand command)
     {
         var material = await _mediator.Send(command);
         return Ok(material);
     }
     [HttpPut]
-    public async Task<ActionResult<MaterialDto>> Update(UpdateMaterialCommand command)
+    public async Task<ActionResult<MaterialDTO>> Update(UpdateMaterialCommand command)
     {
         var material = await _mediator.Send(command);
         return Ok(material);

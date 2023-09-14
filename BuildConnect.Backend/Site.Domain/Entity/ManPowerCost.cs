@@ -6,9 +6,12 @@ namespace Site.Domain.Entity
 {
     public class ManPowerCost : BaseModel
     {
-        public Guid Labour { get; set; }
+        [ForeignKey(nameof(Lookup))]
+        public Guid LabourId { get; set; }
+        public virtual Lookup Labour { get; set; }
         public int Count { get; set; }
-        public int HourlyCost { get; set; }
+        public decimal UnitFactor { get; set; }
+        public decimal HourlyIndex { get; set; }
         [ForeignKey("WorkItem")]
         public Guid WorkItem { get; set; }
     }
@@ -16,9 +19,11 @@ namespace Site.Domain.Entity
     public class ManPowerCostDTO
     {
         public Guid Id { get; set; }
-        public Guid Labour { get; set; }
+        public Guid LabourId { get; set; }
+        public Lookup Labour { get; set; }
         public int Count { get; set; }
-        public int HourlyCost { get; set; }
+        public decimal UnitFactor { get; set; }
+        public decimal HourlyIndex { get; set; }
         public Guid WorkItem { get; set; }
     }
 }

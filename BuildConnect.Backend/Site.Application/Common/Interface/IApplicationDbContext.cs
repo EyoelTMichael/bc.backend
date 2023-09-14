@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Site.Domain.Entity;
 
 namespace Site.Application.Common.Interface;
@@ -28,6 +29,12 @@ public interface IApplicationDbContext
     public DbSet<WorkItem> WorkItems { get; set; }
     public DbSet<MaterialCost> MaterialCosts { get; set; }
     public DbSet<EquipmentCost> EquipmentCosts { get; set; }
+    public DbSet<RFIChat> RFIChats { get; set; }
+
+    public DbSet<ChatMessage> ChatMessages { get; set; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+
+    IDbContextTransaction BeginTransaction();
+    Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default);
 }

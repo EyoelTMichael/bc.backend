@@ -14,6 +14,7 @@ public class UpdateStaffOnSiteCommand : IRequest<StaffOnSiteDTO>
     public Guid Id { get; set; }
     public string Position { get; set; }
     public int Count { get; set; }
+    public string? Image { get; set; }
 }
 
 public class DeleteStaffOnSiteCommand : IRequest

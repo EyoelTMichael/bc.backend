@@ -21,6 +21,7 @@ public class CreateFolderCommandHandler : IRequestHandler<CreateFolderCommand, F
         var folder = new Folder
         {
             Name = request.Name,
+            SiteId = request.SiteId
         };
 
         _context.Folders.Add(folder);

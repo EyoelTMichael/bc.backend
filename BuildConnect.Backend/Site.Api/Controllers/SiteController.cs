@@ -53,7 +53,7 @@ namespace Site.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<SiteDTO>> Create(CreateSiteCommand command)
+        public async Task<ActionResult<SiteDTO>> Create([FromForm] CreateSiteCommand command)
         {
             var site = await _mediator.Send(command);
             return Ok(site);

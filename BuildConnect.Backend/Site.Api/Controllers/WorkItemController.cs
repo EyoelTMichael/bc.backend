@@ -56,6 +56,14 @@ public class WorkItemsController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("site")]
+    public async Task<ActionResult<IEnumerable<WorkItemDTO>>> GetAllBySite(Guid siteId)
+    {
+        var query = new GetAllWorkItemsBySiteQuery { SiteId = siteId };
+        var result = await _mediator.Send(query);
+        return Ok(result);
+    }
+
     // This is just an example if you want to provide an endpoint to fetch a single workitem by its Id
     // GET api/workitems/{id}
     //    [HttpGet("{id}", Name = "GetWorkItemById")]

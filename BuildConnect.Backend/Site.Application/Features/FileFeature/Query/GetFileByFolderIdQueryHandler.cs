@@ -37,15 +37,15 @@ public class GetFileByFolderIdQueryHandler : IRequestHandler<GetFileByFolderIdQu
             var fileModelDto = new FileModelDto
             {
                 Id = file.Id,
-                File = await _fileService.ConvertFileToBase64(file.File, "Content"),
+                File = _fileService.GetFileUrl(file.File, "File"),
                 FileName = file.FileName,
                 FileDetails = fileDetails.Where(fd => fd.FileId == file.Id)
                                          .Select(fd => new FileDetailDto
                                          {
                                              Details = fd.Details,
                                              FileType = fd.FileType,
-                                             x = fd.x,
-                                             y = fd.y
+                                             X = fd.X,
+                                             Y = fd.Y
                                          }).ToList()
             };
 

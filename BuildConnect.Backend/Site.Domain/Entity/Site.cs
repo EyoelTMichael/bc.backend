@@ -13,6 +13,7 @@ namespace Site.Domain.Entity
         public string Owner { get; set; }
         public decimal Longitude { get; set; }
         public decimal Latitude { get; set; }
+        public string? Logo { get; set; }
     }
 
     public class SiteDTO
@@ -22,5 +23,6 @@ namespace Site.Domain.Entity
         public string Owner { get; set; }
         public decimal Longitude { get; set; }
         public decimal Latitude { get; set; }
+        public string? Logo { get; set; }
     }
 }

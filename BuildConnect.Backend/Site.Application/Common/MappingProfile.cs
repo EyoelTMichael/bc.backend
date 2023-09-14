@@ -23,6 +23,7 @@ public class MappingProfile : Profile
         CreateMap<Lookup, LookupDTO>();
         CreateMap<Schedule, ScheduleDTO>();
         CreateMap<Inspection, InspectionDTO>();
+        CreateMap<ManPowerCost, ManPowerCostDTO>();
         CreateMap<MaterialCost, MaterialCostDTO>();
         CreateMap<EquipmentCost, EquipmentCostDTO>();
         CreateMap<WorkItem, WorkItemDTO>();

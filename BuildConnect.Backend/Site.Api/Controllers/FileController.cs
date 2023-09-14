@@ -26,9 +26,9 @@ namespace Site.Api.Controllers
             return Ok(file);
         }
         [HttpGet("folder")]
-        public async Task<ActionResult<IEnumerable<FileModelDto>>> GetByFolder([FromQuery] Guid id)
+        public async Task<ActionResult<IEnumerable<FileModelDto>>> GetByFolder(Guid folderId)
         {
-            var files = await _mediator.Send(new GetFileByFolderIdQuery { FolderId = id });
+            var files = await _mediator.Send(new GetFileByFolderIdQuery { FolderId = folderId });
             return Ok(files);
         }
         [HttpPost]

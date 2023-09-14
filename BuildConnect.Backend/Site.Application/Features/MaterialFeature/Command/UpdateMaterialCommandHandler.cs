@@ -28,7 +28,7 @@ public class UpdateMaterialCommandHandler : IRequestHandler<UpdateMaterialComman
         }
 
         material.Name = request.Name ?? material.Name;
-        material.UnitOfMeasure = request.UnitOfMeasure ?? material.UnitOfMeasure;
+        material.UnitOfMeasureId = request.UnitOfMeasureId ?? material.UnitOfMeasureId;
 
         await _context.SaveChangesAsync(cancellationToken);
 

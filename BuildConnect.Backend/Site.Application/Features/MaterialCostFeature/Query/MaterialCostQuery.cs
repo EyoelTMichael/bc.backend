@@ -3,7 +3,7 @@ using Site.Domain.Entity;
 
 namespace Site.Application.Features.MaterialCostFeature.Query;
 
-public class GetMaterialCostByWorkItemQuery : IRequest<IEnumerable<MaterialCostDTO>>
+public class GetMaterialCostsByWorkItemQuery : IRequest<IEnumerable<MaterialCostDTO>>
 {
     public Guid WorkItem { get; set; }
 }

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Site.Application.Features.LookupFeature.Query;
+using Site.Application.Features.AssignSiteUserFeature.Query;
 using Site.Application.Features.UserFeature.Command;
 using Site.Application.Features.UserFeature.Query;
 using Site.Domain.Entity;
@@ -38,6 +38,19 @@ public class UserController : ControllerBase
         var roles = await _mediator.Send(new GetAllRolesQuery());
         return Ok(roles);
     }
+    [HttpGet("bysite")]
+    public async Task<ActionResult<IEnumerable<UserDTO>>> GetBySite(Guid siteId)
+    {
+        var users = await _mediator.Send(new GetUsersBySiteQuery { SiteId = siteId });
+        return Ok(users);
+    }
+
+    //[HttpGet("byrole")]
+    //public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersByRole(Rolez roleType)
+    //{
+    //    var users = await _mediator.Send(new GetAllUsersByRolesQuery { role = roleType });
+    //    return Ok(users);
+    //}
 
     //[HttpPost]
     //public async Task<ActionResult<Guid>> Create([FromForm] RegisterUserCommand command)

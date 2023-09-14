@@ -42,7 +42,7 @@ var app = builder.Build();
 
 app.UseCors(builder =>
 {
-    builder.WithOrigins("http://localhost:5173") // Replace with your client's address and port
+    builder.WithOrigins("http://localhost:5173")
            .AllowAnyHeader()
            .AllowAnyMethod();
 });
@@ -59,6 +59,8 @@ app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthentication();
+
+//app.UseMiddleware<RoleValidationMiddleware>();
 
 app.UseAuthorization();
 

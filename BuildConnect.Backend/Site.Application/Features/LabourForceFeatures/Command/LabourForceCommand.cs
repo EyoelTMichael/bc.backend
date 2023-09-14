@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Site.Domain.Entity;
 
 namespace Site.Application.Features.LabourForceFeatures.Command;
 

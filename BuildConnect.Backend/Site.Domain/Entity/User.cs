@@ -12,8 +12,6 @@ namespace Site.Domain.Entity
         public string PasswordHash { get; set; }
         public Rolez Role { get; set; }
         public string? Signature { get; set; }
-        //public Guid RoleId { get; set; }
-        //public Role Role { get; set; }
     }
 
     public class UserDTO
@@ -26,7 +24,6 @@ namespace Site.Domain.Entity
         public string ProfileImage { get; set; }
         public Rolez Role { get; set; }
         public string? Signature { get; set; }
-        //public Guid RoleId { get; set; }
     }
 
     public enum Rolez

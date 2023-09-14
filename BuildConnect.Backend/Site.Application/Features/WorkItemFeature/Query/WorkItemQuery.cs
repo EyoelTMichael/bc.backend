@@ -7,3 +7,7 @@ public class GetAllWorkItemsByScheduleQuery : IRequest<IEnumerable<WorkItemDTO>>
 {
     public Guid ScheduleId { get; set; }
 }
+public class GetAllWorkItemsBySiteQuery : IRequest<IEnumerable<WorkItemDTO>>
+{
+    public Guid SiteId { get; set; }
+}

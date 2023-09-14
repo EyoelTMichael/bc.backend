@@ -18,19 +18,25 @@ namespace Site.Domain.Entity
 
     }
 
+    public enum FileDetailType
+    {
+        note,
+        chat
+    }
+
     public class FileDetail : BaseModel
     {
         public Guid FileId { get; set; }
         public string Details { get; set; }
-        public string FileType { get; set; }
-        public long x { get; set; }
-        public long y { get; set; }
+        public FileDetailType FileType { get; set; }
+        public long X { get; set; }
+        public long Y { get; set; }
     }
     public class FileDetailDto
     {
         public string Details { get; set; }
-        public string FileType { get; set; }
-        public long x { get; set; }
-        public long y { get; set; }
+        public FileDetailType FileType { get; set; }
+        public long X { get; set; }
+        public long Y { get; set; }
     }
 }

@@ -8,13 +8,14 @@ using Site.Domain.Entity;
 
 namespace Site.Application.Features.DailyReportFeature.Command;
 
-public class CreateDailyReportCommand : IRequest<DailyReportDTO>
+public class CreateDailyReportCommand : IRequest<Guid>
 {
     public DateTime Date { get; set; }
     public int WorkHour { get; set; }
     public int InterruptedHour { get; set; }
     public string Weather { get; set; }
-    public Guid CreatedBy { get; set; }
+    public Guid CreatedById { get; set; }
+    public Guid? ApprovedById { get; set; }
     public Guid SiteId { get; set; }
     public List<CreateStaffOnSiteCommand> StaffOnSites { get; set; }
     public List<CreateLabourForceCommand> LabourForces { get; set; }

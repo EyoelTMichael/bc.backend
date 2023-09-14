@@ -7,6 +7,8 @@ public class CreateInspectionCommand : IRequest<Guid>
 {
     public string Description { get; set; }
     public Guid ScheduleId { get; set; }
+    public Guid AssignedUserId { get; set; }
+    public Guid CreatedById { get; set; }
 }
 
 public class UpdateInspectionCommand : IRequest<Guid>

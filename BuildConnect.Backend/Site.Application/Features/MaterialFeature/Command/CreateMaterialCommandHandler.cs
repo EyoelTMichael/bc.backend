@@ -22,7 +22,7 @@ public class CreateMaterialCommandHandler : IRequestHandler<CreateMaterialComman
         var material = new Material
         {
             Name = request.Name,
-            UnitOfMeasure = request.UnitOfMeasure
+            UnitOfMeasureId = request.UnitOfMeasureId
         };
 
         _context.Materials.Add(material);

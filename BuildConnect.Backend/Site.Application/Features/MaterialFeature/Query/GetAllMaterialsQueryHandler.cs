@@ -20,8 +20,9 @@ public class GetAllMaterialsQueryHandler : IRequestHandler<GetAllMaterialsQuery,
     }
     public async Task<IEnumerable<MaterialDTO>> Handle(GetAllMaterialsQuery request, CancellationToken cancellationToken)
     {
-        var materials = await _context.Materials.ToListAsync(cancellationToken);
-
+        var materials = await _context.Materials
+    .Include(mc => mc.UnitOfMeasure)
+    .ToListAsync(cancellationToken);
         return _mapper.Map<IEnumerable<MaterialDTO>>(materials);
     }
 }

@@ -37,8 +37,8 @@ namespace Site.Application.Features.FileFeature.Query
                 {
                     Details = fd.Details,
                     FileType = fd.FileType,
-                    x = fd.x,
-                    y = fd.y
+                    X = fd.X,
+                    Y = fd.Y
                 }).ToList()
             };
         }

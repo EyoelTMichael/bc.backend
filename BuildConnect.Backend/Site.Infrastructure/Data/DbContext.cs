@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Site.Application.Common.Interface;
 using Site.Domain.Common;
 using Site.Domain.Entity;
@@ -52,6 +53,9 @@ public class SiteAppDbContext : DbContext, IApplicationDbContext
     public DbSet<WorkItem> WorkItems { get; set; }
     public DbSet<MaterialCost> MaterialCosts { get; set; }
     public DbSet<EquipmentCost> EquipmentCosts { get; set; }
+    public DbSet<RFIChat> RFIChats { get; set; }
+    public DbSet<ChatMessage> ChatMessages { get; set; }
+
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
     {
@@ -80,5 +84,15 @@ public class SiteAppDbContext : DbContext, IApplicationDbContext
         var parameter = Expression.Parameter(type, "e");
         var body = Expression.Equal(Expression.Property(parameter, nameof(BaseModel.DeletedAt)), Expression.Constant(null));
         return Expression.Lambda(body, parameter);
+    }
+
+    public IDbContextTransaction BeginTransaction()
+    {
+        return this.Database.BeginTransaction();
+    }
+
+    public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+    {
+        return await this.Database.BeginTransactionAsync(cancellationToken);
     }
 }

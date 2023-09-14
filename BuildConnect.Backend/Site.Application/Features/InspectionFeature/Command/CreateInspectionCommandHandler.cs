@@ -20,6 +20,9 @@ public class CreateInspectionCommandHandler : IRequestHandler<CreateInspectionCo
             Description = request.Description,
             ScheduleId = request.ScheduleId,
             Status = null,
+            Image = null,
+            AssignedToId = request.AssignedUserId,
+            CreatedById = request.CreatedById,
         };
 
         _context.Inspections.Add(inspection);

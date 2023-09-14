@@ -13,12 +13,12 @@ namespace Site.Domain.Entity
         public Guid SiteId { get; set; }
 
         [ForeignKey("User")]
-        public Guid CreatedBy { get; set; }
+        public Guid CreatedById { get; set; }
         [ForeignKey("User")]
-        public Guid? ApprovedBy { get; set; }
+        public Guid? ApprovedById { get; set; }
         public int? Profitable { get; set; }
-        public virtual User CreatedByUser { get; set; }
-        public virtual User? ApprovedByUser { get; set; }
+        public virtual User CreatedBy { get; set; }
+        public virtual User? ApprovedBy { get; set; }
     }
     public class DailyReportDTO
     {

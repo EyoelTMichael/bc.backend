@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Site.Application.Features.DailyReportFeature.Command;
+using Site.Application.Features.DailyReportFeature.Query;
 using Site.Domain.Entity;
 
 namespace Site.Api.Controllers
@@ -17,9 +18,15 @@ namespace Site.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<DailyReportDTO>> Create(CreateDailyReportCommand command)
+        public async Task<ActionResult<Guid>> Create([FromForm] CreateDailyReportCommand command)
         {
-            var dailyReport = await _mediator.Send(command);
+            var dailyReportId = await _mediator.Send(command);
+            return Ok(dailyReportId);
+        }
+        [HttpGet]
+        public async Task<ActionResult<DailyReport>> Get(Guid id)
+        {
+            var dailyReport = await _mediator.Send(new GetDailyReportQuery { ReportId = id });
             return Ok(dailyReport);
         }
     }

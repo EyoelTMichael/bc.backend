@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Site.Application.Common.Interface;
 using Site.Domain.Entity;
@@ -6,19 +7,19 @@ using Site.Domain.Entity;
 
 namespace Site.Application.Features.FileFeature.Query;
 
-public class GetFileByFolderIdQueryHandler : IRequestHandler<GetFileByFolderIdQuery, IEnumerable<FileModelDto>>
+public class GetFileByFolderIdQueryHandler : IRequestHandler<GetFileByFolderIdQuery, IEnumerable<FileModelDTO>>
 {
     private readonly IApplicationDbContext _context;
+    
     private readonly IFileService _fileService;
 
     public GetFileByFolderIdQueryHandler(IApplicationDbContext context, IFileService fileService)
     {
         _context = context;
-
         _fileService = fileService;
     }
 
-    public async Task<IEnumerable<FileModelDto>> Handle(GetFileByFolderIdQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<FileModelDTO>> Handle(GetFileByFolderIdQuery request, CancellationToken cancellationToken)
     {
         var files = await _context.FileModels
                                   .Where(f => f.FolderId == request.FolderId)
@@ -30,23 +31,15 @@ public class GetFileByFolderIdQueryHandler : IRequestHandler<GetFileByFolderIdQu
                                         .Where(fd => fileIds.Contains(fd.FileId))
                                         .ToListAsync(cancellationToken);
 
-        var fileModelDtos = new List<FileModelDto>();
+        var fileModelDtos = new List<FileModelDTO>();
 
         foreach (var file in files)
         {
-            var fileModelDto = new FileModelDto
+            var fileModelDto = new FileModelDTO
             {
                 Id = file.Id,
-                File = _fileService.GetFileUrl(file.File, "File"),
+                File = _fileService.GetFileUrl(file.File, "SharedFiles"),
                 FileName = file.FileName,
-                FileDetails = fileDetails.Where(fd => fd.FileId == file.Id)
-                                         .Select(fd => new FileDetailDto
-                                         {
-                                             Details = fd.Details,
-                                             FileType = fd.FileType,
-                                             X = fd.X,
-                                             Y = fd.Y
-                                         }).ToList()
             };
 
             fileModelDtos.Add(fileModelDto);

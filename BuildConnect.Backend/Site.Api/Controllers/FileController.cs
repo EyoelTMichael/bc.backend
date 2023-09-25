@@ -17,7 +17,7 @@ namespace Site.Api.Controllers
             _mediator = mediator;
         }
         [HttpGet]
-        public async Task<ActionResult<FileModelDto>> Get([FromQuery] Guid id)
+        public async Task<ActionResult<FileModelDTO>> Get([FromQuery] Guid id)
         {
             var file = await _mediator.Send(new GetFileQuery
             {
@@ -26,13 +26,27 @@ namespace Site.Api.Controllers
             return Ok(file);
         }
         [HttpGet("folder")]
-        public async Task<ActionResult<IEnumerable<FileModelDto>>> GetByFolder(Guid folderId)
+        public async Task<ActionResult<IEnumerable<FileModelDTO>>> GetByFolder(Guid folderId)
         {
             var files = await _mediator.Send(new GetFileByFolderIdQuery { FolderId = folderId });
             return Ok(files);
         }
+        [HttpGet("details")]
+        public async Task<ActionResult<IEnumerable<FileDetailDTO>>> GetDetailsByFileId(Guid fileId)
+        {
+            var fileDetails = await _mediator.Send(new GetFileDetailByFileIdQuery(fileId: fileId));
+            return Ok(fileDetails);
+        }
+        [HttpGet("detail")]
+        public async Task<ActionResult<FileDetailDTO>> GetFileDetail(Guid fileDetailId)
+        {
+            var fileDetail = await _mediator.Send(new GetFileDetailQuery { 
+                Id = fileDetailId
+            });
+            return Ok(fileDetail);
+        }
         [HttpPost]
-        public async Task<ActionResult<Guid>> Create(CreateFileCommand command)
+        public async Task<ActionResult<Guid>> Create([FromForm] CreateFileCommand command)
         {
             var fileId = await _mediator.Send(command);
             return Ok(fileId);

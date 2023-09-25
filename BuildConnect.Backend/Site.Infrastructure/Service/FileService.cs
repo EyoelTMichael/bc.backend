@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.StaticFiles;
 using Site.Application.Common.Interface;
 using SixLabors.ImageSharp.Formats.Jpeg;
-using System;
-using System.IO;
-using System.Threading.Tasks;
+
 
 namespace Site.Infrastructure.Service
 {

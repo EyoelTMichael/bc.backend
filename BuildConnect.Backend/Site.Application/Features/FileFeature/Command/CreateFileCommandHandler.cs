@@ -26,13 +26,28 @@ public class CreateFileCommandHandler : IRequestHandler<CreateFileCommand, Guid>
     }
     public async Task<Guid> Handle(CreateFileCommand request, CancellationToken cancellationToken)
     {
-        string fileName = null;
-        if (!string.IsNullOrEmpty(request.File))
+        byte[] fileBytes;
+
+        using (var memoryStream = new MemoryStream())
         {
-            byte[] imageBytes = Convert.FromBase64String(request.File.Split(',')[1]);
-            string fileType = GetFileTypeFromBase64(request.File);
-            fileName = await _fileService.SaveFileAsync(imageBytes, fileType, "File");
+            await request.File.CopyToAsync(memoryStream);
+            fileBytes = memoryStream.ToArray();
         }
+
+        // Detect file type using ImageSharp
+        var format = Image.DetectFormat(fileBytes);
+
+        // Check if the detected format is valid
+        if (format == null)
+        {
+            throw new Exception("Invalid image format.");
+        }
+
+
+        var fileExtension = format.FileExtensions.FirstOrDefault();
+
+        //var fileExtension = format.DefaultFileExtension;
+        var fileName = await _fileService.SaveFileAsync(fileBytes, fileExtension, "SharedFiles");
         var newFile = new FileModel
         {
             FolderId = request.FolderId,

@@ -4,10 +4,9 @@ using Site.Application.Common.Interface;
 using Site.Domain.Common.Exceptions;
 using Site.Domain.Entity;
 
-
 namespace Site.Application.Features.FileFeature.Query
 {
-    public class GetFileQueryHandler : IRequestHandler<GetFileQuery, FileModelDto>
+    public class GetFileQueryHandler : IRequestHandler<GetFileQuery, FileModelDTO>
     {
         private readonly IApplicationDbContext _context;
 
@@ -16,7 +15,7 @@ namespace Site.Application.Features.FileFeature.Query
             _context = context;
         }
 
-        public async Task<FileModelDto> Handle(GetFileQuery request, CancellationToken cancellationToken)
+        public async Task<FileModelDTO> Handle(GetFileQuery request, CancellationToken cancellationToken)
         {
             var file = await _context.FileModels.FindAsync(request.Id);
             if (file == null)
@@ -28,18 +27,11 @@ namespace Site.Application.Features.FileFeature.Query
                                          .Where(fd => fd.FileId == request.Id)
                                          .ToListAsync(cancellationToken);
 
-            return new FileModelDto
+            return new FileModelDTO
             {
                 Id = file.Id,
                 File = file.File,
                 FileName = file.FileName,
-                FileDetails = fileDetails.Select(fd => new FileDetailDto
-                {
-                    Details = fd.Details,
-                    FileType = fd.FileType,
-                    X = fd.X,
-                    Y = fd.Y
-                }).ToList()
             };
         }
     }

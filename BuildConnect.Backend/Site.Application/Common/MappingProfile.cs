@@ -9,6 +9,7 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<SiteModel, SiteDTO>();
+        CreateMap<RFI, RFIDTO>();
         CreateMap<Role, RoleDto>();
         CreateMap<User, UserDTO>();
         CreateMap<Material, MaterialDTO>();
@@ -17,7 +18,6 @@ public class MappingProfile : Profile
         CreateMap<LabourForce, LabourForceDTO>();
         CreateMap<DailyReport, DailyReportDTO>();
         CreateMap<CreateStaffOnSiteCommand, StaffOnSiteDTO>();
-        //CreateMap<UserTask, UserTaskDto>();
         CreateMap<EquipmentReport, EquipmentReportDTO>();
         CreateMap<Folder, FolderDto>();
         CreateMap<Lookup, LookupDTO>();
@@ -27,5 +27,7 @@ public class MappingProfile : Profile
         CreateMap<MaterialCost, MaterialCostDTO>();
         CreateMap<EquipmentCost, EquipmentCostDTO>();
         CreateMap<WorkItem, WorkItemDTO>();
+        CreateMap<FileDetail, FileDetailDTO>();
+        CreateMap<ActivityLog, ActivityLogDTO>();
     }
 }

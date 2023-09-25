@@ -2,9 +2,6 @@
 using Site.Application.Common.Interface;
 using Site.Domain.Entity;
 using System.Text.RegularExpressions;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Formats;
-
 
 
 namespace Site.Application.Features.UserFeature.Command;
@@ -49,7 +46,6 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, G
 
         var fileExtension = format.FileExtensions.FirstOrDefault();
 
-        //var fileExtension = format.DefaultFileExtension;
         var fileName = await _fileService.SaveFileAsync(fileBytes, fileExtension, "UserProfileImages");
 
         var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);

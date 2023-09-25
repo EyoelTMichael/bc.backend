@@ -17,15 +17,15 @@ public class LookupController: ControllerBase
         _mediator = mediator;
     }
     [HttpGet("all")]
-    public async Task<ActionResult<IEnumerable<LookupDTO>>> Get()
+    public async Task<ActionResult<IEnumerable<LookupDTO>>> Get(Guid siteId)
     {
-        var lookups = await _mediator.Send(new GetLookups());
+        var lookups = await _mediator.Send(new GetLookupsBySite { SiteId = siteId });
         return Ok(lookups);
     }
     [HttpGet("bytype")]
-    public async Task<ActionResult<IEnumerable<LookupDTO>>> GetByType(LookupType lookupType)
+    public async Task<ActionResult<IEnumerable<LookupDTO>>> GetByType(LookupType lookupType, Guid siteId)
     {
-        var lookups = await _mediator.Send(new GetLookupByLookupType { LookupType = lookupType});
+        var lookups = await _mediator.Send(new GetLookupByLookupType { LookupType = lookupType, SiteId = siteId});
         return Ok(lookups);
     }
     [HttpPost]

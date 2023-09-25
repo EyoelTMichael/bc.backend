@@ -1,10 +1,7 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Site.Application.Features.UserFeature.Command;
 using Site.Application.Features.UserFeature.Common;
-using Site.Domain.Entity;
-
 namespace Site.Api.Controllers;
 [ApiController]
 [Route("[controller]")]

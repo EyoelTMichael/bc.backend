@@ -53,8 +53,10 @@ public class SiteAppDbContext : DbContext, IApplicationDbContext
     public DbSet<WorkItem> WorkItems { get; set; }
     public DbSet<MaterialCost> MaterialCosts { get; set; }
     public DbSet<EquipmentCost> EquipmentCosts { get; set; }
+    public DbSet<RFI> RFIs { get; set; }
     public DbSet<RFIChat> RFIChats { get; set; }
     public DbSet<ChatMessage> ChatMessages { get; set; }
+    public DbSet<ActivityLog> ActivityLogs { get; set; }
 
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

@@ -8,7 +8,7 @@ public class GetLookup : IRequest<LookupDTO>
     public Guid Id { get; set; }
 }
 
-public class GetLookups : IRequest<IEnumerable<LookupDTO>>
+public class GetLookupsBySite : IRequest<IEnumerable<LookupDTO>>
 {
     public Guid SiteId { get; set; }
 }
@@ -16,6 +16,7 @@ public class GetLookups : IRequest<IEnumerable<LookupDTO>>
 public class GetLookupByLookupType : IRequest<IEnumerable<LookupDTO>>
 {
     public LookupType LookupType { get; set; }
+    public Guid SiteId { get; set; }
 }
 
 public class GetLookupTypes : IRequest<IEnumerable<string>>

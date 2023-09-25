@@ -47,7 +47,10 @@ public class CreateSiteHandler : IRequestHandler<CreateSiteCommand, Guid>
             Owner = request.Owner,
             Longitude = request.Longitude,
             Latitude = request.Latitude,
-            Logo = fileName
+            Logo = fileName,
+            Supervisor = request.Supervisor,
+            Client = request.Client,
+            Contractor = request.Contractor,
         };
 
         await _context.Sites.AddAsync(site, cancellationToken);

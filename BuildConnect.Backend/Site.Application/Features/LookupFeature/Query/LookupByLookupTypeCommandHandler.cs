@@ -20,7 +20,7 @@ public class LookupByLookupTypesHandler : IRequestHandler<GetLookupByLookupType,
     }
     public async Task<IEnumerable<LookupDTO>> Handle(GetLookupByLookupType request, CancellationToken cancellationToken)
     {
-        var lookups = await _context.Lookups.Where(x => x.LookupType == request.LookupType).ToListAsync();
+        var lookups = await _context.Lookups.Where(x => x.LookupType == request.LookupType && x.SiteId == request.SiteId).ToListAsync();
         var lookupDTOs = _mapper.Map<IEnumerable<LookupDTO>>(lookups);
         return lookupDTOs;
     }

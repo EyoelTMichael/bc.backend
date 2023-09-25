@@ -3,6 +3,18 @@ using Site.Domain.Entity;
 
 namespace Site.Application.Features.RFIFeature.Command;
 
+public class CreateRFICommand : IRequest<Guid>
+{
+    public Guid Assignee { get; set; }
+    public Guid FileId { get; set; }
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public RFIStatus Status { get; set; }
+    public Guid SiteId { get; set; }
+    public double X { get; set; }
+    public double Y { get; set; }
+}
+
 // Command to start a new RFIChat
 public class StartRFIChatCommand : IRequest<Guid>
 {

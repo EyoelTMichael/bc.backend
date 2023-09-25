@@ -24,7 +24,7 @@ public class GetAllFoldersQueryHandler : IRequestHandler<GetAllFoldersQuery, IEn
             .ToListAsync(cancellationToken);
 
         var folderDtos = _mapper.Map<IEnumerable<FolderDto>>(folders);
-        
+
         return folderDtos;
     }
 }

@@ -15,11 +15,12 @@ public class GetSitesByUserQueryHandler : IRequestHandler<GetSiteByUserQuery, IE
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
-
-    public GetSitesByUserQueryHandler(IApplicationDbContext context, IMapper mapper)
+    private readonly IFileService _fileService;
+    public GetSitesByUserQueryHandler(IApplicationDbContext context, IMapper mapper, IFileService fileService)
     {
         _context = context;
         _mapper = mapper;
+        _fileService = fileService;
     }
 
     public async Task<IEnumerable<SiteDTO>> Handle(GetSiteByUserQuery request, CancellationToken cancellationToken)
@@ -29,8 +30,16 @@ public class GetSitesByUserQueryHandler : IRequestHandler<GetSiteByUserQuery, IE
             .Select(su => su.Site)
             .ToListAsync(cancellationToken);
 
-        // Assuming you have a mapper to map from SiteModel to SiteDto.
-        return sites.Select(site => _mapper.Map<SiteDTO>(site));
+        return sites.Select(site =>
+        {
+            var siteDto = _mapper.Map<SiteDTO>(site);
+            siteDto.Logo = string.IsNullOrEmpty(site.Logo)
+            ? $"/api/files/Site/default.png"
+            : _fileService.GetFileUrl(site.Logo, "Site");
+
+            return siteDto;
+        });
     }
+
 
 }

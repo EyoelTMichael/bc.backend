@@ -8,4 +8,10 @@ public class GetRFIChatByFileDetailQuery : IRequest<RFIChat>
     public Guid FileDetailId { get; set; }
 }
 
+public class GetRFIsBySiteQuery : IRequest<IEnumerable<RFIDTO>>
+{
+    public Guid SiteId { get; set; }
+}
+
+
 

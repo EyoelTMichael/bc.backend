@@ -9,7 +9,11 @@ public class CreateSiteCommand : IRequest<Guid>
     public string Owner { get; set; }
     public decimal Longitude { get; set; }
     public decimal Latitude { get; set; }
-    public IFormFile Logo { get; set; }
+    public string Supervisor { get; set; }
+    public string Contractor { get; set; }
+    public string Client { get; set; }
+
+    public IFormFile? Logo { get; set; }
 }
 public class UpdateSiteCommand : IRequest<SiteDTO>
 {
